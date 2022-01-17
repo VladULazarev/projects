@@ -1,0 +1,20 @@
+AddDefaultCharset UTF-8
+
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^([A-Za-z0-9-/]+)$ /index.php?query=$1 [L]
+
+ErrorDocument 404 /404.php
+
+#RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
+#RewriteRule ^index\.php$ http://domainename.com/ [R=301,L]
+
+#RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
+#RewriteRule ^index\.html$ http://domainename.com/ [R=301,L]
+
+Options -Indexes
+
+RewriteRule ^sitemap\.xml$ sitemapp.php [L]
