@@ -1,4 +1,4 @@
 # projects
 Completed projects
 
-project_one Please, read read_me.pdf
+project_one Read the description in read_me.pdf
