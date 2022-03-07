@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+
+  www:
+    container_name: restapi_www
+    build:
+      dockerfile: Dockerfile
+    depends_on:
+      - restapi_db
+    volumes:
+      - .:/var/www/html/
+    ports:
+      - '80:80'
+
+  restapi_db:
+    container_name: restapi_db
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: restapi
+      MYSQL_USER: MYSQL_USER
+      MYSQL_PASSWORD: MYSQL_PASSWORD
+    volumes:
+      - ./ms_data:/var/lib/mysql/
+    ports:
+      - '9906:3306'
+
+  restapi_pmadm:
+    container_name: restapi_pmadm
+    image: phpmyadmin
+    ports:
+      - '81:80'
+    environment:
+      PMA_HOST: restapi_db
+    depends_on:
+      - restapi_db
+
+volumes:
+  data:
+    name: restapi_www
+  ms_data:
+    name: restapi_mysql
