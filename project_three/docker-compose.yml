@@ -5,6 +5,7 @@ services:
   www:
     container_name: restapi_www
     build:
+      context: .
       dockerfile: Dockerfile
     depends_on:
       - restapi_db
