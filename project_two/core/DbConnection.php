@@ -16,8 +16,8 @@ class DbConnection
     {
         $localhost = 'localhost';
         $dbname    = 'worktask';
-        $password  = 'root';
         $username  = 'root';
+        $password  = '';
 
         try {
           	$handler = new PDO("mysql:host={$localhost};charset=utf8mb4;dbname={$dbname}", "{$username}", "{$password}");

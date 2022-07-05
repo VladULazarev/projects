@@ -18,3 +18,5 @@ ErrorDocument 404 /404.php
 Options -Indexes
 
 RewriteRule ^sitemap\.xml$ sitemapp.php [L]
+
+php_flag display_errors off

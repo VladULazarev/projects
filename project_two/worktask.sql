@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 15, 2022 at 11:39 AM
--- Server version: 5.7.29
--- PHP Version: 7.4.4
+-- Generation Time: Jul 05, 2022 at 09:33 PM
+-- Server version: 5.7.33
+-- PHP Version: 8.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -133,8 +133,7 @@ INSERT INTO `users` (`id`, `login`, `name`, `last_name`, `email`, `confirmed`, `
 (5, 'Goommy', 'Goo', 'Somename', 'test@mail.com', 1, 'f6766af61a09264dc32a098a098d28e9c5b3e7e9', '127.0.0.1', '2022-01-15'),
 (6, 'Dimmy', 'Dimm', 'Somename', 'one@mail.com', 1, 'f6766af61a09264dc32a098a098d28e9c5b3e7e9', '127.0.0.1', '2022-01-15'),
 (7, 'Nimmy', 'Nimm', 'Somename', 'two@mail.com', 1, 'f6766af61a09264dc32a098a098d28e9c5b3e7e9', '127.0.0.1', '2022-01-15'),
-(8, 'Oimmy', 'Omm', 'Somename', 'tesbbt@mail.com', 1, 'f6766af61a09264dc32a098a098d28e9c5b3e7e9', '127.0.0.1', '2022-01-15'),
-(9, 'Vlad', 'Vlad', 'Lazarev', 'v.laz2010@yandex.ru', 1, 'd8913df37b24c97f28f840114d05bd110dbb2e44', '127.0.0.1', '2022-01-15');
+(8, 'Oimmy', 'Omm', 'Somename', 'tesbbt@mail.com', 1, 'f6766af61a09264dc32a098a098d28e9c5b3e7e9', '127.0.0.1', '2022-01-15');
 
 --
 -- Indexes for dumped tables
@@ -180,7 +179,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

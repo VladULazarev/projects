@@ -532,6 +532,7 @@ label {
   padding: .4rem 5rem;
   border-radius: .3rem;
   box-shadow: var(--box-shadow);
+  border: none;
 }
 .btn-default:hover {
   background: var(--btn-default-bg-hover);
