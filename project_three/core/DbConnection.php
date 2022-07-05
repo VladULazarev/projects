@@ -14,8 +14,8 @@ class DbConnection
      */
     public function connect()
     {
-        $localhost = 'restapi_db';
-        $dbname    = 'restapi';
+        $localhost = 'demodocker_db';
+        $dbname    = 'demodocker';
         $password  = 'root';
         $username  = 'root';
 

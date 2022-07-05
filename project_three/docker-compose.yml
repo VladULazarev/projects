@@ -3,23 +3,23 @@ version: '3.8'
 services:
 
   www:
-    container_name: restapi_www
+    container_name: demodocker_www
     build:
       context: .
       dockerfile: Dockerfile
     depends_on:
-      - restapi_db
+      - demodocker_db
     volumes:
       - .:/var/www/html/
     ports:
       - '80:80'
 
-  restapi_db:
-    container_name: restapi_db
+  demodocker_db:
+    container_name: demodocker_db
     image: mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: restapi
+      MYSQL_DATABASE: demodocker
       MYSQL_USER: MYSQL_USER
       MYSQL_PASSWORD: MYSQL_PASSWORD
     volumes:
@@ -27,18 +27,18 @@ services:
     ports:
       - '9906:3306'
 
-  restapi_pmadm:
-    container_name: restapi_pmadm
+  demodocker_pmadm:
+    container_name: demodocker_pmadm
     image: phpmyadmin
     ports:
       - '81:80'
     environment:
-      PMA_HOST: restapi_db
+      PMA_HOST: demodocker_db
     depends_on:
-      - restapi_db
+      - demodocker_db
 
 volumes:
   data:
-    name: restapi_www
+    name: demodocker_www
   ms_data:
-    name: restapi_mysql
+    name: demodocker_mysql
