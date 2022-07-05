@@ -15,9 +15,9 @@ class DbConnection
     public function connect()
     {
         $localhost = 'localhost';
-        $dbname    = 'restapi';
-        $password  = 'root';
-        $username  = 'root';
+        $dbname    = '';
+        $username  = '';
+        $password  = '';       
 
         try {
           	$handler = new PDO("mysql:host={$localhost};charset=utf8mb4;dbname={$dbname}", "{$username}", "{$password}");
