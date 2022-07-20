@@ -10,7 +10,6 @@ class ValidatorController extends Controller
     // Pattern for uri
     private static $uriPattern = '/^[A-Za-z0-9\-]+$/u';
 
-    // Length of a string
     public static $strLength = 70;
 
     /**
