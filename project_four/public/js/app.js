@@ -78,7 +78,7 @@ $(document).ready(function(){
                 // If nothing was found
                 } else {
                     $(".content").fadeTo(middleTime, 0).empty();
-                    $(".found-articles").html("<h6 class='nothing-found'>Nothing Found</h6>").fadeTo(middleTime, 1);
+                    $(".found-articles").html("<div class='count-articles p-2 ms-3 mt-5'>Nothing Found</div>").fadeTo(middleTime, 1);
                 }
             });
 

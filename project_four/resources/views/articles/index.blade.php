@@ -8,6 +8,8 @@ use App\Http\Controllers\ValidatorController;
 
 <div class="row content mt-5 mb-5">
 
+    <div class="count-articles p-2 ms-3">Found {{ $articlesAmount['count'] }} {{ $articlesAmount['text'] }}</div>
+
     @foreach ($articles as $article)
     <div class="col-lg-6">
         <?php

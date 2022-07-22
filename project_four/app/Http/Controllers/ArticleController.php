@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use App\Models\Contact;
+use DB;
 use App\Http\Controllers\ValidatorController;
 
 class ArticleController extends Controller
@@ -14,7 +16,14 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return view('articles.index', [ 'articles' => Article::latest()->get() ]);
+        $articles = Article::latest()->get();
+
+        $articlesAmount = ValidatorController::countArticles($articles);
+
+        return view('articles.index', [
+            'articles' => $articles,
+            'articlesAmount' => $articlesAmount
+        ]);
     }
 
     /**
@@ -122,13 +131,18 @@ class ArticleController extends Controller
             abort(404);
         }
 
-        $article = Article::latest()->where('tags', 'like', "%$tag%")->get();
+        $articles = Article::latest()->where('tags', 'like', "%$tag%")->get();
+
+        $articlesAmount = ValidatorController::countArticles($articles);
 
         // If nothing found
-        if (! count($article)) {
+        if (! count($articles)) {
             abort(404);
         } else {
-            return view('articles.articles-by-tag', [ 'articles' => $article ]);
+            return view('articles.articles-by-tag', [
+                'articles' => $articles,
+                'articlesAmount' => $articlesAmount
+            ]);
         }
     }
 
@@ -146,13 +160,18 @@ class ArticleController extends Controller
         }
 
         // Get articles by tag from search field
-        $article = Article::latest()->where('tags', 'like', "%$tag%")->get();
+        $articles = Article::latest()->where('tags', 'like', "%$tag%")->get();
+
+        $articlesAmount = ValidatorController::countArticles($articles);
 
         // If nothing found
-        if (! count($article)) {
+        if (! count($articles)) {
             return false; // It goes to /public/js/app.js line 68
         } else {
-            return view('articles.search-articles-by-tag', [ 'articles' => $article ]);
+            return view('articles.search-articles-by-tag', [
+                'articles' => $articles,
+                'articlesAmount' => $articlesAmount
+            ]);
         }
     }
 
@@ -167,13 +186,18 @@ class ArticleController extends Controller
             abort(404);
         }
 
-        $article = Article::latest()->where('user_id', $author)->get();
+        $articles = Article::latest()->where('user_id', $author)->get();
+
+        $articlesAmount = ValidatorController::countArticles($articles);
 
         // If nothing found
-        if (! count($article)) {
+        if (! count($articles)) {
             abort(404);
         } else {
-            return view('articles.articles-by-author', [ 'articles' => $article ]);
+            return view('articles.articles-by-author', [
+                'articles' => $articles,
+                'articlesAmount' => $articlesAmount
+            ]);
         }
     }
 }

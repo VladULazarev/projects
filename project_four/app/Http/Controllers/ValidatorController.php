@@ -10,6 +10,7 @@ class ValidatorController extends Controller
     // Pattern for uri
     private static $uriPattern = '/^[A-Za-z0-9\-]+$/u';
 
+    // Length of a string
     public static $strLength = 70;
 
     /**
@@ -41,5 +42,25 @@ class ValidatorController extends Controller
             $newStr = mb_substr($newStr, 0, mb_strrpos($newStr, ' ')) . "...";
             return $newStr;
         }
+    }
+
+    /**
+     * Count found articles and set 'text' as 'article' or 'articles'
+     *
+     * @param object $articles
+     * @return array Example:
+     *  $articlesAmount = [
+     *    'count' => '10'      (amount of found articles)
+     *    'text'  => 'article' (or 'articles')
+     *  ];
+     */
+    public static function countArticles(object $articles): array {
+
+        $articlesAmount['count'] = count($articles);
+
+        ( $articlesAmount['count'] == 1 ) ?
+        $articlesAmount['text'] = 'article' : $articlesAmount['text'] = 'articles';
+
+        return $articlesAmount;
     }
 }
