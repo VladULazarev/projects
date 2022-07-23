@@ -95,9 +95,9 @@ class ArticleController extends Controller
     protected function validateArticle()
     {
         return request()->validate([
-            'slug'    => 'bail|required|min:3|max:50|regex:/^[A-Za-z0-9\-]+$/',
+            'slug'    => 'bail|required|min:3|max:50|unique:articles|regex:/^[A-Za-z0-9\-]+$/',
             'tags'    => 'bail|required|min:2|max:50|regex:/^[A-Za-z, ]+$/',
-            'title'   => 'bail|required|min:3|max:100|regex:/^[\w.\- ,]+$/u',
+            'title'   => 'bail|required|min:3|max:100|unique:articles|regex:/^[\w.\- ,]+$/u',
             'excerpt' => 'bail|required|min:3|max:200|regex:/^[\w.\- !,?:;]+$/u',
             'body'    => 'bail|required|min:3|max:2000|regex:/^[\w.\- !,?:;]+$/u'
         ]);
