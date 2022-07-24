@@ -13,13 +13,12 @@
             <span class="article-author ps-2 mb-2">{{ $article->updated_at }} | </span>
 
             <span class="article-author mb-2">Author: </span>
-            <a href="{{ route('articles.articles-by-author', ['author' => $article->user_id ]) }}"
+            <a href="{{ route('articles.articles-by-author', [ 'author' => $authorUrlName ]) }}"
               class="author-link mb-2">{{ $author->name }}
             </a>
 
             <p>{{ $article->body }}</p>
 
-            <?php $tags = explode(', ', $article->tags); // Set array for foreach loop ?>
             <p>Tags:
                 @foreach ($tags as $tag)
                     <a href="{{ route('articles.articles-by-tag', ['tag' => $tag ]) }}"

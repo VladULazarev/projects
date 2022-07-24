@@ -3,8 +3,8 @@
 
  1. Disable 'Enter' key
  2. Set variables
- 3. Content shows up
- 4. Type a 'tag' name in the 'Search by tag' field
+ 3. Show content
+ 4. Type a 'tag' name in the 'Search by tag' form
  5. Hide 'alert' border and 'alert' message under an 'input' field
 */
 
@@ -21,7 +21,7 @@ $(document).ready(function(){
 // ---------------------------------------------------------- 2. Set variables
     let middleTime = 300;
 
-// ------------------------------------------------------- 3. Content shows up
+// ----------------------------------------------------------- 3. Show content
     $(".content").fadeTo(middleTime, 1);
 
     $(".show-articles").on("click", function() {
@@ -32,7 +32,7 @@ $(document).ready(function(){
         $(location).attr("href", "/articles/create");
     });
 
-// ------------------------- 4. Type a 'tag' name in the 'Search by tag' field
+// ------------------------- 4. Type a 'tag' name in the 'Search by tag' form
     $("#search-article").on("keyup", function() {
 
         // Get value from the field
@@ -53,7 +53,7 @@ $(document).ready(function(){
     	   // Start the script if the length of 'tag' > 1 and < 25
         if (tag.length > 1 && tag.length < 25) {
 
-    				// Send 'tag' nad '_token'
+    				// Send 'tag' and '_token' to app\Http\Controllers\ArticleController.php
     				$.post("/articles/tag/" + tag, {
 
                 _token: _token,
@@ -72,13 +72,14 @@ $(document).ready(function(){
                     // Append and show the found data
                     $(".found-articles").html(data).fadeTo(middleTime, 1);
 
-                    // Show
+                    // Show data
                     $(".content").fadeTo(middleTime, 1);
 
                 // If nothing was found
                 } else {
                     $(".content").fadeTo(middleTime, 0).empty();
-                    $(".found-articles").html("<div class='count-articles p-2 ms-3 mt-5'>Nothing Found</div>").fadeTo(middleTime, 1);
+                    $(".found-articles").html("<div class='count-articles p-2 ms-3 mt-5'>Nothing Found</div>")
+                    .fadeTo(middleTime, 1);
                 }
             });
 

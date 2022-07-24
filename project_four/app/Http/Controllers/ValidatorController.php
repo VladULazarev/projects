@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class ValidatorController extends Controller
 {
-    // Pattern for uri
+    // Pattern for uri (slug)
     private static $uriPattern = '/^[A-Za-z0-9\-]+$/u';
 
     // Length of a string
@@ -54,13 +54,40 @@ class ValidatorController extends Controller
      *    'text'  => 'article' (or 'articles')
      *  ];
      */
-    public static function countArticles(object $articles): array {
+    public static function countArticles(object $articles): array
+    {
 
-        $articlesAmount['count'] = count($articles);
+        $articlesAmount['count'] = self::countItems($articles);
 
         ( $articlesAmount['count'] == 1 ) ?
         $articlesAmount['text'] = 'article' : $articlesAmount['text'] = 'articles';
 
         return $articlesAmount;
+    }
+
+    /**
+     * Count array or 'Collection'
+     *
+     * @param array or 'Collection' $items
+     * @return int amount of items if OK, otherwise abort(404)
+     */
+    public static function countItems($items)
+    {
+        if (! count($items)) {
+            return abort(404);
+        }
+
+        return count($items);
+    }
+
+    /**
+     * Convert author's name
+     *
+     * @param string author's name ('Jone Dow')
+     * @return string author's name for uri ('jone-dow')
+     */
+    public static function convertAuthorName(string $author): string
+    {
+        return str_replace(' ', '-', strtolower($author));
     }
 }

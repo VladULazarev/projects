@@ -1,5 +1,4 @@
 <?php
-use App\Models\Article;
 use App\Http\Controllers\ValidatorController;
 ?>
 @extends('layouts.layout')
@@ -13,8 +12,6 @@ use App\Http\Controllers\ValidatorController;
     @foreach ($articles as $article)
     <div class="col-lg-6">
         <?php
-            // Get author for current article
-            $author = Article::find($article->id)->author;
             // Cut 'title'
             $title = ValidatorController::setStringLength($article->title, ValidatorController::$strLength);
         ?>
@@ -25,8 +22,8 @@ use App\Http\Controllers\ValidatorController;
             <span class="article-author mb-2">{{ $article->updated_at }} | </span>
 
             <span class="article-author mb-2">Author: </span>
-            <a href="{{ route('articles.articles-by-author', ['author' => $article->user_id ]) }}"
-              class="author-link mb-2">{{ $author->name }}
+            <a href="{{ route('articles.articles-by-author', ['author' => $authorUrlName ]) }}"
+              class="author-link mb-2">{{ $author[0]->name }}
             </a>
 
             <span class="article-author mb-2">| Excerpt:</span>
@@ -44,4 +41,4 @@ use App\Http\Controllers\ValidatorController;
 
 </div>
 
-@endsection
+@endsection 

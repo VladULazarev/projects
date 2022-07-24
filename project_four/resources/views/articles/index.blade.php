@@ -17,6 +17,8 @@ use App\Http\Controllers\ValidatorController;
             $author = Article::find($article->id)->author;
             // Cut 'title'
             $title = ValidatorController::setStringLength($article->title, ValidatorController::$strLength);
+            // Convert 'Jone Dow' into 'jone-dow'
+            $authorUrlName = ValidatorController::convertAuthorName($author->name);
         ?>
         <section class="article-cart relative break-words p-3 mt-3">
 
@@ -25,7 +27,7 @@ use App\Http\Controllers\ValidatorController;
             <span class="article-author mb-2">{{ $article->updated_at }} | </span>
 
             <span class="article-author mb-2">Author: </span>
-            <a href="{{ route('articles.articles-by-author', ['author' => $article->user_id ]) }}"
+            <a href="{{ route('articles.articles-by-author', ['author' => $authorUrlName ]) }}"
               class="author-link mb-2">{{ $author->name }}
             </a>
 

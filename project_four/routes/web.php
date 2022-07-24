@@ -29,7 +29,7 @@ Route::get('/articles/{article}/edit', [
 // Update the article
 Route::put('/articles/{article}', [ ArticleController::class, 'update' ]);
 
-// Show the view to delete article
+// Show the view to delete an article
 Route::get('/articles/{article}/destroy', [
   ArticleController::class, 'destroy' ])->name('articles.destroy');
 
