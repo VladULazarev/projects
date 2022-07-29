@@ -18,7 +18,7 @@ class Article extends Model
      * Not like: App\Models\Article::find(1)->user;
      * It is more readable way
      *
-     * @return array the user(author) 'data' how wrote the current article
+     * @return array the user(author) 'data' who wrote the current article
      */
      public function author()
      {
