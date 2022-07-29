@@ -66,7 +66,7 @@ class SubscriptionTest extends TestCase
         $email = 'test@gmail.com';
 
         // Create new object (we can not use '$this->subscription' from 'setUp()')
-        $subscription = new Subscription($mailer, $httpResourceStub, $validator);
-        $subscription->confirmSubscription($email);
+        $this->subscription = new Subscription($mailer, $httpResourceStub, $validator);
+        $this->subscription->confirmSubscription($email);
     }
 }
