@@ -2,13 +2,14 @@
 use App\Models\Article;
 use App\Http\Controllers\ValidatorController;
 ?>
+
 @extends('layouts.layout')
 
 @section('content')
 
-<div class="row content mt-5 mb-5">
+<div class="count-articles p-2 mt-5">Found {{ $articlesAmount['count'] }} {{ $articlesAmount['text'] }}</div>
 
-    <div class="count-articles p-2 ms-3">Found {{ $articlesAmount['count'] }} {{ $articlesAmount['text'] }}</div>
+<div class="row">
 
     @foreach ($articles as $article)
     <div class="col-lg-6">

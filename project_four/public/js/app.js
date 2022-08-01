@@ -20,6 +20,7 @@ $(document).ready(function(){
 
 // ---------------------------------------------------------- 2. Set variables
     let middleTime = 300;
+    let shortTime  = 100;
 
 // ----------------------------------------------------------- 3. Show content
     $(".content").fadeTo(middleTime, 1);
@@ -67,19 +68,19 @@ $(document).ready(function(){
                 // If something was found
                 if (data) {
 
-                    $(".content").fadeTo(middleTime, 0).empty();
-
                     // Append and show the found data
-                    $(".found-articles").html(data).fadeTo(middleTime, 1);
+                    $(".content").empty().html(data);
 
-                    // Show data
                     $(".content").fadeTo(middleTime, 1);
 
                 // If nothing was found
                 } else {
-                    $(".content").fadeTo(middleTime, 0).empty();
-                    $(".found-articles").html("<div class='count-articles p-2 ms-3 mt-5'>Nothing Found</div>")
-                    .fadeTo(middleTime, 1);
+                  $(".content").fadeTo(shortTime, 0).empty();
+
+                  setTimeout(function(){
+                      $(".content").html("<div class='count-articles p-2 mt-5'>Nothing Found</div>")
+                      .fadeTo(shortTime, 1);
+                  }, shortTime);
                 }
             });
 

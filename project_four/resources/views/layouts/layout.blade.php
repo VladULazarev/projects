@@ -68,15 +68,15 @@
 
           </div>
 
-          <div class="found-articles"></div>
+          <div class="content mt-5 mb-5">
 
-          @yield('content')
+              @yield('content')
 
-          <div class="row content mt-5 mb-5 home-img">
               @if(Request::is('/'))
                   <img src="/images/create.jpg" class="img-fluid" alt="Home page">
               @endif
-          </idv>
+
+          </div>
 
     </div>
 
