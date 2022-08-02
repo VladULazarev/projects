@@ -79,7 +79,7 @@ $(document).ready(function(){
                   $(".content").fadeTo(shortTime, 0).empty();
 
                   setTimeout(function(){
-                      $(".content").html("<div class='count-articles p-2 mt-5'>Nothing Found</div>")
+                      $(".content").html("<div class='count-articles'>Nothing Found</div>")
                       .fadeTo(shortTime, 1);
                   }, shortTime);
                 }
