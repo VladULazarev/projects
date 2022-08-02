@@ -4,6 +4,7 @@ CONTENTS
 1. Main elements
 2. Form css
 3. Buttons
+4. Click and redirect
 
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600&display=swap'); */
@@ -98,6 +99,8 @@ h5::first-letter {
 }
 .article-cart {
   border: none;
+  padding: 1rem;
+  margin-top: 1rem;
   border-radius: 7px;
   box-shadow: var(--box-shadow);
   background: #fff;
@@ -105,6 +108,9 @@ h5::first-letter {
 }
 .article-cart:hover {
   box-shadow: var(--hover-box-shadow);
+}
+.article-link, .article-author {
+  margin-bottom: 1rem;
 }
 .article-link {
   text-decoration: none;
@@ -147,8 +153,13 @@ h5::first-letter {
   color: #0a66c2;
 }
 .count-articles {
+  padding: 0.5rem;
+  margin-left: 1rem;
   color: #0a66c2;
   font-weight: 500;
+}
+.text-end {
+  padding-right: 1rem;
 }
 /* ------------------------------------------------------------ 2. Form css */
 .form-row {
@@ -216,4 +227,15 @@ label {
 .btn-delete-article:hover {
   color: #fff;
   background: #e91e63;
+}
+/* -------------------------------------------------- 4. Click and redirect */
+.click-me {
+  cursor: pointer;
+  transition: all 300ms;
+}
+.click-me:hover .article-link {
+  color: #009688;
+}
+.click-me > h5 {
+  margin-bottom: .5rem;
 }

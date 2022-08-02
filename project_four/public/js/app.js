@@ -6,6 +6,7 @@
  3. Show content
  4. Type a 'tag' name in the 'Search by tag' form
  5. Hide 'alert' border and 'alert' message under an 'input' field
+ 6. Click and redirect
 */
 
 $(document).ready(function(){
@@ -93,6 +94,12 @@ $(document).ready(function(){
 // ------------ 5. Hide 'alert' message and 'alert' border under 'input' field
     $(document).on("keydown", "input, textarea", function(){
     		$(this).next().fadeTo(middleTime, 0).removeClass("alert-border");
+    });
+
+// ----------------------------------------------------- 6. Click and redirect
+    $(document).on("click", ".click-me", function(){
+        let url = $(this).data("value");
+        $(location).attr("href", url);
     });
 
 }); // end/ $(document).ready(

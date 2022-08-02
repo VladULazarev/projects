@@ -5,7 +5,7 @@ use App\Http\Controllers\ValidatorController;
 
 <div class="row content mt-5 mb-5">
 
-    <div class="count-articles p-2 ms-3">Found {{ $articlesAmount['count'] }} {{ $articlesAmount['text'] }}</div>
+    <div class="count-articles">Found {{ $articlesAmount['count'] }} {{ $articlesAmount['text'] }}</div>
 
     @foreach ($articles as $article)
     <div class="col-lg-6">
@@ -17,23 +17,27 @@ use App\Http\Controllers\ValidatorController;
             // Convert 'Jone Dow' into 'jone-dow'
             $authorUrlName = ValidatorController::convertAuthorName($author->name);
         ?>
-        <section class="article-cart relative break-words p-3 mt-3">
+        <section class="article-cart relative break-words">
 
-            <h5 class="mb-2">{{ $title }}</h5>
+            <span class="article-author">{{ $article->updated_at }} | </span>
 
-            <span class="article-author mb-2">{{ $article->updated_at }} | </span>
-
-            <span class="article-author mb-2">Author: </span>
+            <span class="article-author">Author: </span>
             <a href="{{ route('articles.articles-by-author', ['author' => $authorUrlName ]) }}"
-              class="author-link mb-2">{{ $author->name }}
+              class="author-link">{{ $author->name }}
             </a>
 
-            <span class="article-author mb-2">| Excerpt:</span>
-            <p>{{ $article->excerpt }}</p>
+            <!-- <span class="article-author mb-2">| Excerpt:</span> -->
+            <div class="click-me" data-value="{{ $article->path() }}">
 
-            <p class="text-end pe-3">
-              <a href='{{ $article->path() }}' class="article-link">Show article...</a>
-            </p>
+              <h5>{{ $title }}</h5>
+
+              <p>{{ $article->excerpt }}</p>
+
+              <p class="text-end">
+                <a href='{{ $article->path() }}' class="article-link">Show article...</a>
+              </p>
+
+            </div>
 
         </section>
 
